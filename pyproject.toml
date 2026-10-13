@@ -1,0 +1,14 @@
+[project]
+name = "log-record-backpressure-signal"
+version = "0.1.0"
+description = "Watches QueueHandler queue depth and triggers a callback once when it exceeds a threshold."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
