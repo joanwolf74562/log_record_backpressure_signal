@@ -30,3 +30,10 @@ The signal is **edge-triggered**. After firing once it will not fire again until
 The callback is invoked synchronously inside `check()`, and exceptions it raises propagate out of `check()` unchanged. The monitor is left disarmed in that case — it does not pretend the signal was delivered. Call `reset()` once you have handled the failure.
 
 Only `logging.handlers.QueueHandler` (or a subclass) is accepted. A plain `StreamHandler` has no queue to observe, so passing one raises `TypeError` immediately rather than failing later with an attribute error.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
